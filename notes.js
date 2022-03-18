@@ -6,7 +6,6 @@ export const notes = function () {
 };
 
 export const add_note = function (title, body) {
-//   console.log(title, " jfsdh", body);
   const notes = load_Notes();
   debugger
 
@@ -61,4 +60,4 @@ const load_Notes = function () {
     return [];
   }
 };
-// module.exports/.notes = notes
+
