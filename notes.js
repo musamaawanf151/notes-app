@@ -46,6 +46,39 @@ export const remove_note = function(title){
     
 }
 
+export const readNote = (title) => {
+  const notes = loadNotes()
+  const note = notes.find((note) => note.title === title)
+
+  if (note) {
+      console.log(chalk.inverse(note.title))
+      console.log(note.body)
+  } else {
+      console.log(chalk.red.inverse('Note not found!'))
+  }
+}
+
+
+export const listNotes = () => {
+  const notes = loadNotes()
+
+  console.log(chalk.inverse('Your notes'))
+
+  notes.forEach((note) => {
+      console.log(note.title)
+  })
+}
+
+const loadNotes = () => {
+  try {
+      const dataBuffer = fs.readFileSync('notes.json')
+      const dataJSON = dataBuffer.toString()
+      return JSON.parse(dataJSON)
+  } catch (e) {
+      return []
+  }
+}
+
 const save_notes = function (data) {
   const data_json = JSON.stringify(data);
   fs.writeFileSync("notes.json", data_json);
