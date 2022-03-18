@@ -1,0 +1,2 @@
+This is my first file using node
+ this line is appended in this file using fs.appendFileSync
